@@ -8,11 +8,92 @@
     <script defer src="https://pyscript.net/releases/2023.03.1/pyscript.js"></script>
 </head>
 <body>
+<h1>Pyodide Codes offline pyscript</h1>
+<h6>These are the codes for the offline version of pyscript which was supported in 2023.03.1 version.</h6>
+<pre style="background-color:#f1f1f1;">
+<code onmousedown="return false" onselectstart="return false">
+Display simple Image
+&lt;img src="https://sheinsz.ltwebstatic.com/she_dist/images/touch-icon-ipad-120-601ddff8b5.png" alt="Italian Trulli"&gt; 
+</code>
+</pre>
 <img src="https://sheinsz.ltwebstatic.com/she_dist/images/touch-icon-ipad-120-601ddff8b5.png" alt="Italian Trulli"> 
+<pre style="background-color:#f1f1f1;">
+<code onmousedown="return false" onselectstart="return false">
+Display on DOM 
+ display("hello")
+Display on Terminal
+ print("hello")
+</code>
+</pre>
     <py-script>
-     from pyscript import display
+     from pyscript import display,HTML
      display("hello")
      print("hello")
     </py-script>
+<h6>Code to display Simple pandas dataframe.</h6>
+<pre style="background-color:#f1f1f1;">
+<code onmousedown="return false" onselectstart="return false">
+&lt;html&gt; 
+    &lt;head&gt;
+      &lt;link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /&gt;
+      &lt;script defer src="https://pyscript.net/alpha/pyscript.js"&gt; &lt;/script&gt;
+      &lt;py-config&gt;
+          - autoclose_loader: true
+          - runtimes:
+            - src: "https://cdn.jsdelivr.net/pyodide/dev/full/pyodide.js"
+              name: pyodide-dev
+              lang: python
+    &lt;/py-config&gt;
+      &lt;py-env&gt;
+    - pandas
+      &lt;/py-env&gt;
+    &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;py-script&gt;
+    import pandas as pd
+    l1 = [1,2,3,4,5]
+    l2 = ['a','b','c','d','e']
+    data = pd.DataFrame(l1,l2)
+    data_html = data.to_html()
+    print(data_html)
+    &lt;/py-script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+<pre style="background-color:#f1f1f1;">
+<code onmousedown="return false" onselectstart="return false">
+&lt;html&gt;
+    &lt;head&gt;
+      &lt;link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /&gt;
+      &lt;script defer src="https://pyscript.net/alpha/pyscript.js"&gt;&lt;/script&gt;
+      &lt;py-config&gt;
+          - autoclose_loader: true
+          - runtimes:
+            - src: "https://cdn.jsdelivr.net/pyodide/dev/full/pyodide.js"
+              name: pyodide-dev
+              lang: python
+    &lt;/py-config&gt;
+    
+      &lt;py-env&gt;
+    - numpy
+    - pandas
+    - pytesseract
+    - opencv-python
+      &lt;/py-env&gt;
+    &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;py-script&gt;
+    import numpy as np
+    import pandas as pd
+    import pytesseract
+    import os
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    
+    &lt;/py-script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </body>
 </html>
